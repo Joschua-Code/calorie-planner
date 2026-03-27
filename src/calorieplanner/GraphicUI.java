@@ -1,29 +1,54 @@
 package calorieplanner;
+
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.application.Platform;
+
 import javafx.stage.Stage;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+
 import javafx.geometry.Insets;
+import javafx.scene.image.Image;
 
 
 public class GraphicUI extends Application{
 
 	@Override
 	public void start(Stage stage) {
-		TextField insert = new TextField();
-		insert.setPromptText("Hallo, wie heißt du?");
+		TextField insertName = new TextField();
+		insertName.setPromptText("Hallo, wie heißt du?");
 		
-		Button button = new Button("Enter");
+		Button enterName = new Button("Enter");
 		
-		VBox root = new VBox(10, button, insert);
-		root.setPadding(new Insets(30));
+		Label outputName = new Label();
 		
-		Scene scene = new Scene(root, 700, 700);
+		enterName.setOnAction(e -> {
+			String text1 = insertName.getText();
+			outputName.setText("Hallo " + text1 + ".");
+			insertName.clear();
+		}); 
+		
+		insertName.setOnAction(e -> enterName.fire());
+		
+		HBox rootName = new HBox(1, insertName, enterName);
+		
+		VBox root = new VBox(10,outputName, rootName);
+		root.setPadding(new Insets(10));
+		
+		Scene scene = new Scene(root, 300, 200);
 		stage.setTitle("Kalorienplaner");
 		stage.setScene(scene);
+//		stage.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
+		
 		stage.show();
+
+		
+		Platform.runLater(() -> root.requestFocus());
 	}
 		
 	public static void main(String[] args) {
@@ -31,7 +56,7 @@ public class GraphicUI extends Application{
 	}
 		
 		
-		
+
 	
 
 }
