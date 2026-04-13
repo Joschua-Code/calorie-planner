@@ -26,7 +26,6 @@ public class ConsoleUI {
 		
 		System.out.println("\n" + name + " du darfst täglich bis zu " + dailyCal + " Kalorien zu dir nehmen.");
 		
-
 	}
 
 }

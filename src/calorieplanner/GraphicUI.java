@@ -30,13 +30,13 @@ public class GraphicUI extends Application{
 		
 		Label placeHolder = new Label();
 		
-		enterName.setOnAction(e -> {
+		enterName.setOnAction(_ -> {
 			String text1 = insertName.getText();
 			outputName.setText("Hallo " + text1 + ".");
 			insertName.clear();
 		}); 
 		
-		insertName.setOnAction(e -> enterName.fire());
+		insertName.setOnAction(_ -> enterName.fire());
 		
 		HBox rootName = new HBox(1, insertName, enterName);
 		rootName.setAlignment(Pos.CENTER);
